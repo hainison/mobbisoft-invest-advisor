@@ -1,0 +1,46 @@
+.lista-classes {
+  list-style: none;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+.lista-classes li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  position: relative;
+}
+
+.nome-classe {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.informacoes {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.subtotal,
+.quantidade {
+  font-size: 14px;
+}
+
+.percentual {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #005eff;
+}
+
+.clearfix {
+  clear: both;
+  /* Adicionado para limpar o float */
+}

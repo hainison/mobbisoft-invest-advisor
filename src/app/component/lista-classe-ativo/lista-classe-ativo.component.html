@@ -1,0 +1,11 @@
+<ul class="lista-classes p-grid p-nogutter">
+  <li *ngFor="let ativo of ativosSumarizado" (click)="verDetalhes(ativo)" class="p-col-12 p-sm-6 p-md-4 p-lg-3">
+    <div class="nome-classe">{{ ativo.nomeClasse }}</div>
+    <div class="informacoes">
+      <div class="subtotal">{{ ativo.subtotal | currency:'BRL' }}</div>
+      <div class="quantidade">{{ ativo.quantidade }} ativos</div>
+    </div>
+    <div class="percentual">{{ ativo.percentual }}%</div>
+    <div class="clearfix"></div>
+  </li>
+</ul>

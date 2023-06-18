@@ -1,0 +1,42 @@
+.content {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  /* Define a primeira linha para o componente header e a segunda linha para o restante do conteúdo */
+  gap: 20px;
+}
+
+.total-investments {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff9900;
+  padding: 10px;
+
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #007bff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.floating-button:hover {
+  background-color: #0056b3;
+}
+
+.floating-button i {
+  color: #fff;
+  font-size: 24px;
+}

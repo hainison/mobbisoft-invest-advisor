@@ -1,0 +1,16 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="fazerLogin()" class="login-form p-fluid">
+    <div class="p-field">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="email" pInputText required>
+      <small *ngIf="emailError" class="p-error">{{ emailError }}</small>
+    </div>
+    <div class="p-field">
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" [(ngModel)]="senha" pInputText required>
+      <small *ngIf="senhaError" class="p-error">{{ senhaError }}</small>
+    </div>
+    <button type="submit" pButton class="p-button p-button-primary" label="Entrar"></button>
+  </form>
+</div>

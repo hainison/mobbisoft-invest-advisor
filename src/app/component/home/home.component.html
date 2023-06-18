@@ -1,0 +1,18 @@
+<app-header></app-header>
+<br><br><br><br>
+<div class="content">
+  <div class="total-investments">
+    Valor total dos investimentos: R$ {{ valorTotalInvestimentos }}
+  </div>
+</div>
+
+<grafico-evolucao-patrimonio></grafico-evolucao-patrimonio>
+
+<br />
+
+<app-lista-classe-ativo></app-lista-classe-ativo>
+<br><br>
+
+<div class="floating-button" (click)="redirecionarParaInclusaoAtivo()">
+  <i class="pi pi-plus"></i>
+</div>
