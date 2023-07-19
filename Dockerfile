@@ -1,24 +1,19 @@
-FROM node:14
+FROM node:16.14.0-alpine as build
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
+COPY package.json ./
 
-COPY . .
+RUN npm install
+
+COPY . ./
+
 RUN npm run build
 
-FROM node:14
+FROM nginx:alpine
 
-WORKDIR /app/server
+COPY --from=build /app/dist /usr/share/nginx/html
 
-COPY server/package*.json ./
-RUN npm ci
+EXPOSE 80
 
-COPY server/ .
-
-ENV NODE_ENV production
-ENV PORT 8000
-EXPOSE 8000
-
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]
