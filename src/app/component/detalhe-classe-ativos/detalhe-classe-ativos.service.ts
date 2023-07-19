@@ -1,36 +1,25 @@
+import { TransacaoAtivo } from './../../model/transacao-ativo';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 //import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { TransacaoAtivo } from 'src/app/model/transacao-ativo';
+import { TokenService } from '../autenticacao/token.service';
+import { UtilService } from 'src/app/util/util.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DetalheClasseAtivosService {
-  private apiUrl = 'URL_DA_API'; // Substitua pela URL da sua API
 
-  //constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private utilService: UtilService) { }
 
-  getAtivosUsuarioPorClasse(idUsuario: number, idClasseAtivo: number): Observable<TransacaoAtivo[]> {
+  public getAtivosUsuarioPorClasse(idClasseAtivo: number): Observable<any> {
+    console.log("idClasseAtivo front", idClasseAtivo);
 
-    const ativosMock: TransacaoAtivo[] = [
-      {
-        idTransacao: 1,
-        idClasseAtivo: idClasseAtivo,
-        codigoAtivo: 'ABC123',
-        codigoTipoOperacao: 1,
-        nomeCorretora: 'Corretora X',
-        quantidadeTransacionada: 10,
-        valorUnitarioTransacionado: 100.50,
-        dataTransacao: new Date()
-      },
-      // Adicione mais objetos de ativo conforme necessário
-    ];
-
-    return of(ativosMock); // Retornar um Observable com o valor fixo
-
-
-    //const url = `${this.apiUrl}/usuarios/${idUsuario}/ativos?classeAtivo=${idClasseAtivo}`;
-    //return this.http.get<TransacaoAtivo[]>(url);
+    return this.http.post<TransacaoAtivo[]>
+      (this.utilService.getApiPath('listar-transacoes-ativo'),
+        { idClasseAtivo },
+        { headers: this.utilService.getHeaderPost() }
+      )
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../autenticacao/usuario/usuario.service';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +12,14 @@ export class HomeComponent implements OnInit {
   valorTotalInvestimentos = 1000;
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
+    this.usuarioService.retornaUsuario().subscribe(usuario => {
+      console.log("Usuario", usuario);
+    });
+
+
   }
 
   redirecionarParaInclusaoAtivo(): void {

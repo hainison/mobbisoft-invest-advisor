@@ -1,0 +1,18 @@
+.mat-radio-button~.mat-radio-button {
+  margin-left: 16px;
+}
+
+.horizontal-center {
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilos para os componentes ocuparem 100% da largura */
+app-header,
+h2,
+p,
+.mat-form-field,
+.input-field,
+.mat-toolbar {
+  width: 100%;
+}

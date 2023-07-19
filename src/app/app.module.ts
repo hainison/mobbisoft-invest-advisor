@@ -1,3 +1,7 @@
+
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -5,15 +9,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
-import { LoginComponent } from './component/loginX/login.component';
+import { LoginComponent } from './component/login/login.component';
 
-import { CalendarModule } from 'primeng/calendar';
-import { ToolbarModule } from 'primeng/toolbar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
-import { ListboxModule } from 'primeng/listbox';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +30,10 @@ import { NgChartsModule } from 'ng2-charts';
 import { ListaClasseAtivoComponent } from './component/lista-classe-ativo/lista-classe-ativo.component';
 import { IncluirAtivoComponent } from './component/incluir-ativo/incluir-ativo.component';
 import { DetalheClasseAtivosComponent } from './component/detalhe-classe-ativos/detalhe-classe-ativos.component';
+import { AutenticacaoService } from './component/autenticacao/autenticacao.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NovoUsuarioComponent } from './component/novo-usuario/novo-usuario.component';
+import { GroupByPipe } from './component/detalhe-classe-ativos/group-by.pipe';
 
 
 @NgModule({
@@ -37,21 +47,27 @@ import { DetalheClasseAtivosComponent } from './component/detalhe-classe-ativos/
     ListaClasseAtivoComponent,
     IncluirAtivoComponent,
     DetalheClasseAtivosComponent,
+    NovoUsuarioComponent,
+    GroupByPipe
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ButtonModule,
-    InputTextModule,
-    PasswordModule,
+    MatButtonModule,
+    MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgChartsModule,
-    ListboxModule,
-    CalendarModule,
-    ToolbarModule
+    MatSelectModule,
+    MatToolbarModule,
+    HttpClientModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatIconModule
 
   ],
   providers: [],

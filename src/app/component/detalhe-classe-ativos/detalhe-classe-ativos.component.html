@@ -1,2 +1,32 @@
-<p>detalhe-classe-ativos works!</p>
-{{listaTransacaoAtivo | json}}
+<app-header [voltarPara]="'/home'"></app-header>
+<div style="padding-top: 70px;">
+
+  <h3>{{getNomeClasseAtivo()}}</h3>
+  <div class="cards-container">
+    <div class="card" *ngFor="let ativo of ativosCard">
+      <div class="card-content mat-card-content">
+        <h3>{{ getNomeTipoAtivo(ativo.idTipoAtivo) }}</h3>
+        <div class="card-info">
+          <div class="info-row">
+            <span class="label">Ativo:</span>
+            <span class="value">{{ ativo.codigoAtivo }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Quantidade</span>
+            <span class="value">{{ ativo.quantidadeTotal }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Preço médio</span>
+            <span class="value">{{ativo.precoMedio | currency:'BRL' }} </span>
+          </div>
+          <div class="info-row">
+            <span class="label">Valor aplicado</span>
+            <span class="value">{{ ativo.valorTotal | currency:'BRL' }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

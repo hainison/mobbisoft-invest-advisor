@@ -1,17 +1,16 @@
-<div style="margin-top: 10%;">
+<app-header></app-header>
+<div style="margin-top: 20%;">
   <h4 class="text-center">Login</h4>
 
   <form class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
     <div class="form-group">
       <input class="form-control" placeholder="Nome do usuário" type="text" [(ngModel)]="usuario" name="usuario"
         #campoUsuario="ngModel" required />
-      <app-mensagem *ngIf="campoUsuario.invalid && campoUsuario.touched" mensagem="Usuário obrigátorio"></app-mensagem>
     </div>
     <br />
     <div class="form-group">
       <input class="form-control" placeholder="Senha" type="password" [(ngModel)]="senha" name="senha"
         #campoSenha="ngModel" required />
-      <app-mensagem *ngIf="campoSenha.invalid && campoSenha.touched" mensagem="Senha obrigátoria"></app-mensagem>
     </div>
     <br />
     <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-lg btn-block col-12">
@@ -21,6 +20,6 @@
 
   <p>
     Ainda não está cadastrado?
-    <a [routerLink]="['novousuario']">Se cadastre</a>
+    <a [routerLink]="['novo-usuario']">Se cadastre</a>
   </p>
 </div>

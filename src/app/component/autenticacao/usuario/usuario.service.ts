@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from './usuario';
 import { TokenService } from './../token.service';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +38,8 @@ export class UsuarioService {
 
   logout() {
     this.tokenService.excluiToken();
-    this.usuarioSubject.next({});
+    this.usuarioSubject.next(null);
+    this.usuarioSubject.complete();
   }
 
   estaLogado() {
@@ -53,7 +54,7 @@ export class UsuarioService {
             'X-Parse-Application-Id': 'DAi57xIEX4DCqDTfuPdvIScgHeHIPVhhcnfhk3nI',
             'X-Parse-REST-API-Key': 'LrZY2ikNFDi60Jpaw65I59EW577mH0cDFMrranof',
             'X-Parse-Session-Token': token,
-            'Content-Type':'application/json'
+            'Content-Type': 'application/json'
           })
         }
       )

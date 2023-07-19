@@ -1,53 +1,65 @@
-<app-header></app-header>
+<app-header [voltarPara]="'/home'"></app-header>
 <br><br><br>
 
-<h2>Inclusão de Novos Ativos</h2>
-<div class="form-field">
-  <label for="tipoAtivo">Tipo de Ativo:</label>
-  <select id="tipoAtivo" [(ngModel)]="novoAtivo.tipoAtivo">
-    <option *ngFor="let tipo of tiposAtivo" [value]="tipo">{{ tipo }}</option>
-  </select>
-</div>
+<h2 class="horizontal-center">
+  Inclusão de Novos Ativos
+</h2>
 
+<p>
+  <mat-radio-group id="operacao" [(ngModel)]="novoAtivo.codigoTipoOperacao" class="horizontal-center">
+    <mat-radio-button *ngFor="let operacao of listaTipoOperacao" [value]="operacao.codigo">
+      {{ operacao.nome }}
+    </mat-radio-button>
+  </mat-radio-group>
+</p>
+<mat-form-field appearance="outline">
+  <mat-label>Tipo de Ativo</mat-label>
+  <mat-select id="tipoAtivo" [(ngModel)]="novoAtivo.idTipoAtivo">
+    <mat-option *ngFor="let tipo of listaTipoAtivo" [value]="tipo.codigo">
+      {{ tipo.nome }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
-<div class="form-field">
-  <label for="codigoAtivo">Código do Ativo:</label>
-  <input type="text" id="codigoAtivo" [(ngModel)]="novoAtivo.codigoAtivo" />
-</div>
-
-<div class="form-field">
-  <label for="operacao">Operação:</label>
-  <select id="operacao" [(ngModel)]="novoAtivo.operacao">
-    <option *ngFor="let operacao of operacoes" [value]="operacao">{{ operacao }}</option>
-  </select>
-</div>
-
-<div class="form-field">
-  <label for="corretora">Nome da Corretora:</label>
-  <input type="text" id="corretora" [(ngModel)]="novoAtivo.corretora" />
-</div>
-
-<div class="form-field">
-  <label for="quantidade">Quantidade:</label>
-  <input type="number" id="quantidade" [(ngModel)]="novoAtivo.quantidade" />
-</div>
+<mat-form-field appearance="outline">
+  <mat-label>Código do Ativo</mat-label>
+  <input matInput type="text" id="codigoAtivo" [(ngModel)]="novoAtivo.codigoAtivo" />
+</mat-form-field>
 
 <div class="form-field">
-  <label for="preco">Preço:</label>
-  <input type="number" id="preco" [(ngModel)]="novoAtivo.preco" />
+  <mat-form-field appearance="outline">
+    <mat-label>Nome da Corretora</mat-label>
+    <input matInput type="text" id="corretora" [(ngModel)]="novoAtivo.nomeCorretora" />
+  </mat-form-field>
 </div>
 
 <div class="form-field">
-  <label for="data">Data:</label>
-  <p-calendar [(ngModel)]="novoAtivo.data"></p-calendar>
+  <mat-form-field appearance="outline">
+    <mat-label>Quantidade</mat-label>
+    <input matInput type="number" id="quantidade" [(ngModel)]='novoAtivo.quantidadeTransacionada' inputmode="numeric" />
+  </mat-form-field>
 </div>
 
-<p-toolbar>
-  <div class="p-toolbar-group-left">
-    <button pButton type="button" label="Voltar" icon="pi pi-arrow-left" class="p-button-secondary"
-      (click)="voltarParaHome()"></button>
-  </div>
-  <div class="p-toolbar-group-right">
-    <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="salvarAtivo()"></button>
-  </div>
-</p-toolbar>
+<div class="form-field">
+  <mat-form-field appearance="outline">
+    <mat-label>Valor transação</mat-label>
+    <input matInput type="number" id="preco" [(ngModel)]="novoAtivo.valorUnitarioTransacionado" inputmode="numeric" />
+  </mat-form-field>
+</div>
+
+
+
+<div class="form-field">
+  <mat-form-field appearance="outline">
+    <mat-label>Data</mat-label>
+    <input matInput [matDatepicker]="picker" placeholder="Escolha uma data" [(ngModel)]="novoAtivo.dataTransacao">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<br />
+<mat-toolbar>
+  <button mat-raised-button color="primary" type="button" (click)="salvarAtivo()" style="width: 100%;">
+    Salvar
+  </button>
+</mat-toolbar>

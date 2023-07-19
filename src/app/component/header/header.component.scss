@@ -26,3 +26,25 @@
 .header-profile {
   margin-left: 10px;
 }
+
+.header-dark {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.titulo {
+  font-size: 21px;
+}
+
+
+.user-popup {
+  position: absolute;
+  top: 52px;
+  right: 20px;
+  background-color: #3f4dcd;
+  padding: 10px;
+  height: 100px;
+}

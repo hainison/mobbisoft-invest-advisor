@@ -1,12 +1,11 @@
 export interface TransacaoAtivo {
-  idTransacao: number;
   idClasseAtivo: number;
+  idTipoAtivo: number;
   codigoAtivo: string;
   /**1 - Compra / 2 - Venda */
   codigoTipoOperacao: number;
   nomeCorretora: string;
-  quantidadeTransacionada: number;
-  valorUnitarioTransacionado: number;
+  quantidadeTransacionada: any;
+  valorUnitarioTransacionado: any;
   dataTransacao: Date;
-
 }

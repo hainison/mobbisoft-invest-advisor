@@ -1,29 +1,27 @@
-import { UsuarioService } from './usuario/usuario.service';
-import { Usuario } from './usuario/usuario';
+import { NovoUsuario } from './novo-usuario';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AutenticacaoService {
-  constructor(
-    private httpClient: HttpClient,
-    private usuarioService: UsuarioService
-  ) { }
+export class NovoUsuarioService {
+  constructor(private httpClient: HttpClient) { }
 
-  autenticar(usuario: String, senha: String): Observable<HttpResponse<any>> {
+
+  cadastrar(novoUsuario: NovoUsuario): Observable<HttpResponse<any>> {
     return this.httpClient
       .post(
-        'https://parseapi.back4app.com/parse/functions/login',
+        'https://parseapi.back4app.com/parse/functions/create-user',
         {
-          email: usuario,
-          password: senha,
+          email: novoUsuario.email,
+          name: novoUsuario.name,
+          password: novoUsuario.password,
         },
         {
           observe: 'response',
+
           headers: new HttpHeaders({
             'X-Parse-Application-Id': 'DAi57xIEX4DCqDTfuPdvIScgHeHIPVhhcnfhk3nI',
             'X-Parse-REST-API-Key': 'LrZY2ikNFDi60Jpaw65I59EW577mH0cDFMrranof',
@@ -41,10 +39,14 @@ export class AutenticacaoService {
             "email": body.result.email
           }
 
-          const authToken = body.result.sessionToken ?? '';
-          this.usuarioService.salvaToken(authToken, user as Usuario);
 
         })
       );
+  }
+
+
+
+  verificaUsuarioExistente(nomeUsuario: string) {
+    return this.httpClient.get(`http://3000/user/exists/${nomeUsuario}`);
   }
 }

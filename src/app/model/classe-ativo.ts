@@ -5,13 +5,14 @@ export class ClasseAtivo {
       { codigo: 1, nome: 'Renda Variável' },
       { codigo: 2, nome: 'Renda Fixa' },
       { codigo: 3, nome: 'Fundo de Investimentos' },
-      { codigo: 3, nome: 'Previdência Privada' },
-      { codigo: 4, nome: 'Criptoativos' }
+      { codigo: 4, nome: 'Previdência Privada' },
+      { codigo: 5, nome: 'Criptoativos' },
+      { codigo: 6, nome: 'Outros' }
     ];
     return classes;
   }
   static getNomeClassePorCodigo(codigo: number): string {
-    const classe = ClasseAtivo.getClassesDisponiveis().find(classe => classe.codigo === codigo);
+    const classe = ClasseAtivo.getClassesDisponiveis().find(classe => classe.codigo == codigo);
     return classe ? classe.nome : '';
   }
 }

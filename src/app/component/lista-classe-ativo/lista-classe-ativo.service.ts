@@ -19,10 +19,11 @@ export class ListaClasseAtivoService {
     private http: HttpClient,
   ) { }
 
-  private ativos: TransacaoAtivo[] = [
+  ativos: TransacaoAtivo[] = [
     {
-      idTransacao: 1,
+
       idClasseAtivo: 1,
+      idTipoAtivo: 1,
       codigoAtivo: 'ABC123',
       codigoTipoOperacao: 1,
       nomeCorretora: 'Corretora X',
@@ -31,8 +32,9 @@ export class ListaClasseAtivoService {
       dataTransacao: new Date()
     },
     {
-      idTransacao: 2,
+
       idClasseAtivo: 2,
+      idTipoAtivo: 2,
       codigoAtivo: 'DEF456',
       codigoTipoOperacao: 2,
       nomeCorretora: 'Corretora Y',
@@ -41,8 +43,9 @@ export class ListaClasseAtivoService {
       dataTransacao: new Date()
     },
     {
-      idTransacao: 11,
+
       idClasseAtivo: 1,
+      idTipoAtivo: 1,
       codigoAtivo: 'GHI789',
       codigoTipoOperacao: 1,
       nomeCorretora: 'Corretora X',
@@ -51,8 +54,9 @@ export class ListaClasseAtivoService {
       dataTransacao: new Date()
     },
     {
-      idTransacao: 12,
+
       idClasseAtivo: 3,
+      idTipoAtivo: 2,
       codigoAtivo: 'JKL012',
       codigoTipoOperacao: 2,
       nomeCorretora: 'Corretora Z',
@@ -62,8 +66,9 @@ export class ListaClasseAtivoService {
     },
 
     {
-      idTransacao: 100,
+
       idClasseAtivo: 1,
+      idTipoAtivo: 3,
       codigoAtivo: 'ABC123',
       codigoTipoOperacao: 1,
       nomeCorretora: 'Corretora X',
@@ -72,8 +77,9 @@ export class ListaClasseAtivoService {
       dataTransacao: new Date()
     },
     {
-      idTransacao: 200,
+
       idClasseAtivo: 4,
+      idTipoAtivo: 1,
       codigoAtivo: 'DEF456',
       codigoTipoOperacao: 2,
       nomeCorretora: 'Corretora Y',
@@ -82,8 +88,9 @@ export class ListaClasseAtivoService {
       dataTransacao: new Date()
     },
     {
-      idTransacao: 110,
+
       idClasseAtivo: 1,
+      idTipoAtivo: 3,
       codigoAtivo: 'GHI789',
       codigoTipoOperacao: 5,
       nomeCorretora: 'Corretora X',
@@ -92,8 +99,9 @@ export class ListaClasseAtivoService {
       dataTransacao: new Date()
     },
     {
-      idTransacao: 120,
+
       idClasseAtivo: 3,
+      idTipoAtivo: 1,
       codigoAtivo: 'JKL012',
       codigoTipoOperacao: 24,
       nomeCorretora: 'Corretora Z',
