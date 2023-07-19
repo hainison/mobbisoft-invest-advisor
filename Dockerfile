@@ -1,21 +1,24 @@
-# Estágio de compilação
-FROM node:14-alpine as build
+FROM node:14
 
 WORKDIR /app
 
 COPY package*.json ./
-
-RUN npm install
+RUN npm ci
 
 COPY . .
-
 RUN npm run build
 
-# Estágio de produção
-FROM nginx:alpine
+FROM node:14
 
-COPY --from=build /app/dist/docker-angular-app /usr/share/nginx/html
+WORKDIR /app/server
 
-EXPOSE 80
+COPY server/package*.json ./
+RUN npm ci
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY server/ .
+
+ENV NODE_ENV production
+ENV PORT 8000
+EXPOSE 8000
+
+CMD ["npm", "start"]
