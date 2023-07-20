@@ -1,10 +1,11 @@
-FROM node:14 as node
+FROM node:lts-alpine as node
 WORKDIR /app
+COPY package.json /app
+RUN npm install --silent
 COPY . .
-RUN npm install
 RUN npm run build
 
-FROM nginx:1.21
-COPY --from=node /app/dist/mobbisoft-invest-advisor /usr/share/nginx/html
-
-EXPOSE 80
+FROM nginx:alpine
+VOLUME /var/cache/nginx
+COPY --from=node app/dist/mobbisoft-invest-advisor /usr/share/nginx/html
+COPY ./config/nginx.conf  /etc/nginx/conf.d/default.conf
