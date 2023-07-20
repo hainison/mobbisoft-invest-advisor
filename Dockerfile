@@ -1,18 +1,20 @@
-FROM node:16.14.0-alpine as build
+# Estágio de compilação
+FROM node:14-alpine as build
 
 WORKDIR /app
 
-COPY package.json ./
+COPY package*.json ./
 
 RUN npm install
 
-COPY . ./
+COPY . .
 
 RUN npm run build
 
+# Estágio de produção
 FROM nginx:alpine
 
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/docker-angular-app /usr/share/nginx/html
 
 EXPOSE 80
 
